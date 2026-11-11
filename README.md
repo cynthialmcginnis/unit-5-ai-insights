@@ -21,6 +21,12 @@ Each task is followed by the reason behind it and what to do about it. The lectu
 
 The lecture ends with four questions you answer about your own AI system.
 
+## Real Tools Lab
+
+`real-tools-lab.ipynb` is a Google Colab notebook that goes with the lecture. You run a real sentiment model, read its real confidence scores, try to fool it, test whether it is reliable, and set a threshold on 50 scored messages. You run cells and type into boxes. You do not write code.
+
+**Open it in Colab:** https://colab.research.google.com/github/cynthialmcginnis/unit-5-ai-insights/blob/main/real-tools-lab.ipynb
+
 ## What it teaches
 
 - Each output of a language service is one measurement. A person connects them.
