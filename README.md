@@ -11,10 +11,13 @@ An interactive lecture that runs in a web browser. An AI system gives you a labe
 3. **Check a GenAI summary.** Find the sentences it invented.
 4. **Place eight systems** as Sort, Spot, or Trigger.
 5. **Fool a tone scorer.** A working scorer labels what you type.
-6. **Test two scoring machines.** One is not reliable. One is not relevant.
-7. **Set a threshold in 3D, then build a rule.** Trade misses for false alarms across 100 customer messages.
-8. **Audit ten travel claims in 75 seconds** with an AI label on every line.
-9. **Design a review** with a limited budget and run it for a month. Then match six systems to a human in the loop, on the loop, or out of the loop.
+6. **Read confidence scores.** Ten labels all score near 0.90. Count how many are right.
+7. **Test two scoring machines.** One is not reliable. One is not relevant.
+8. **Set a threshold in 3D, then build a rule.** Trade misses for false alarms across 100 customer messages.
+9. **Audit ten travel claims in 75 seconds** with an AI label on every line.
+10. **Design a review** with a limited budget and run it for a month. Then match six systems to a human in the loop, on the loop, or out of the loop.
+
+Each task is followed by the reason behind it and what to do about it. The lecture opens with a short page on what to do after cross-validation.
 
 The lecture ends with four questions you answer about your own AI system.
 
@@ -23,6 +26,7 @@ The lecture ends with four questions you answer about your own AI system.
 - Each output of a language service is one measurement. A person connects them.
 - Picking a label and writing new text fail in different ways.
 - The setting changes what a label means.
+- A confidence score shows how closely an input matches what the model has seen. It does not show that the label is right.
 - A score has to be reliable and relevant before anyone acts on it.
 - Every threshold trades misses for false alarms. A person chooses it.
 - People tend to agree with an automated answer. A review process has to be designed against that.

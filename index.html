@@ -138,6 +138,7 @@ label.f{display:block;font-weight:600;margin:14px 0 4px}
 .mail .from{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--muted);word-break:break-all}
 .mail .body{margin:4px 0 8px}
 .ai{display:inline-block;border-radius:99px;padding:2px 12px;font-size:.85rem;font-weight:700;margin-right:10px}
+.ai.neut{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
 .ai.safe{background:var(--good-soft);color:var(--good)} .ai.phish{background:var(--bad-soft);color:var(--bad)}
 /* bars */
 .bars{display:grid;grid-template-columns:150px 1fr;gap:6px 12px;align-items:center;font-size:.92rem}
@@ -230,10 +231,11 @@ input[type=checkbox],input[type=radio]{width:auto}
   <h2>Agenda</h2>
   <ol class="agenda" id="agendaList">
    <li data-go="hook"><div><b>Eight seconds to decide</b><br><span class="muted">You run an earthquake warning system</span></div></li>
+   <li data-go="u4"><div><b>One step left from Unit 4</b><br><span class="muted">What you do after cross-validation, and why</span></div></li>
    <li data-go="s1"><div><b>What a language service returns</b><br><span class="muted">You do the service's work, then catch a GenAI summary inventing facts</span></div></li>
    <li data-go="s2"><div><b>Sort, spot, trigger</b><br><span class="muted">You place eight systems where they belong</span></div></li>
    <li data-go="s3"><div><b>Same output, different meaning</b><br><span class="muted">You try to fool a tone scorer</span></div></li>
-   <li data-go="s4"><div><b>How far can you trust a score?</b><br><span class="muted">You test two scoring machines and set a threshold in 3D</span></div></li>
+   <li data-go="s4"><div><b>How far can you trust a score?</b><br><span class="muted">You read confidence scores, test two scoring machines, and set a threshold in 3D</span></div></li>
    <li data-go="s5"><div><b>Trusting the system too much</b><br><span class="muted">You audit ten travel claims against a clock</span></div></li>
    <li data-go="s6"><div><b>High stakes: who decides</b><br><span class="muted">You design a review with a limited budget</span></div></li>
    <li data-go="close"><div><b>Back to the question</b><br><span class="muted">Class discussion</span></div></li>
@@ -302,6 +304,35 @@ input[type=checkbox],input[type=radio]{width:auto}
    <tr><td><b>Automation bias</b></td><td>The habit of trusting an automated answer over your own judgment.</td><td>Approving a claim because the system marked it "OK"</td></tr>
    <tr><td><b>Human review</b></td><td>A person checks an AI output before it affects someone.</td><td>A clerk checks every claim the system wants to deny</td></tr>
   </table>
+ </div>
+</section>
+
+<!-- ============ UNIT 4 FOLLOW-UP ============ -->
+<section class="slide" id="u4">
+ <div class="page">
+  <div class="kicker">One step left from Unit 4</div>
+  <h2>After cross-validation: what you do with the scores</h2>
+  <p>Last week you split the training data into equal parts, called folds. Each round trained a model on all the folds but one and tested it on the fold left out. That gave one score for each round. Here is what you do next, and why.</p>
+  <div class="grid2">
+   <div class="card"><h3>The five scores from last week</h3>
+    <table style="margin:0"><tr><th>Round</th><th>Score on the fold left out</th></tr>
+     <tr><td>1</td><td>88%</td></tr><tr><td>2</td><td>91%</td></tr><tr><td>3</td><td class="bad"><b>62%</b></td></tr><tr><td>4</td><td>90%</td></tr><tr><td>5</td><td>89%</td></tr>
+     <tr><td><b>Average</b></td><td><b>84%</b></td></tr></table></div>
+   <div class="card"><h3>Why you did it</h3>
+    <p>One split gives one score, and that score depends on which records happened to fall in the test part. With folds, every record is tested once, by a model that never saw it.</p>
+    <p style="margin:0">The fold models are a measuring tool. None of them is the model you will use.</p></div>
+  </div>
+  <h3 style="margin-top:16px">What you do next</h3>
+  <table>
+   <tr><th style="width:5%"></th><th style="width:36%">Step</th><th>Why</th></tr>
+   <tr><td><b>1</b></td><td><b>Average the scores.</b></td><td>The average, 84 percent, is your best estimate of how the model will do on new data. It is more trustworthy than any single score.</td></tr>
+   <tr><td><b>2</b></td><td><b>Look at how far apart the scores are.</b></td><td>Close scores mean the model behaves the same on every part of the data. One score far from the rest means one part of the data is different.</td></tr>
+   <tr><td><b>3</b></td><td><b>Open the weak fold and read its records.</b></td><td>Round 3 scored 62 percent. Find what those records share: a time period, a site, a group of people. That is a data problem to fix, with the tools from Unit 4.</td></tr>
+   <tr><td><b>4</b></td><td><b>Change one thing and run all the rounds again.</b></td><td>Cross-validation is how you compare choices, such as two ways to fill in missing values. Keep the choice with the higher average and the closer scores.</td></tr>
+   <tr><td><b>5</b></td><td><b>Train one final model on all of the training data.</b></td><td>The fold models each learned from only part of the data. The final model learns from all of it.</td></tr>
+   <tr><td><b>6</b></td><td><b>Test the final model once on the test set you set aside.</b></td><td>The model has never seen the test set, so this is the score you report. If you test again after more changes, the test set is no longer unseen.</td></tr>
+  </table>
+  <div class="def"><b>The tie to tonight:</b> step 3 is the habit this whole unit teaches. A score tells you that something is wrong. Reading the records tells you what.</div>
  </div>
 </section>
 
@@ -380,7 +411,7 @@ input[type=checkbox],input[type=radio]{width:auto}
   <div class="do"><b>What you do:</b> Move the slider to change how often the system is wrong. Read what happens under each use.</div>
   <div class="row"><span style="white-space:nowrap">Wrong on <b id="jobPct">8</b> percent</span><input type="range" id="jobSlider" min="1" max="20" value="8" aria-label="Error rate in percent"></div>
   <div class="grid3">
-   <div class="card"><div class="muted">Spot</div><div class="stat good" id="jobSpot"></div><p style="margin:.4em 0 0;font-size:.95rem">The pattern across 10,000 messages barely moves. Errors in both directions mostly cancel.</p></div>
+   <div class="card"><div class="muted">Spot</div><div class="stat good" id="jobSpot"></div><p style="margin:.4em 0 0;font-size:.95rem">The pattern across 10,000 messages barely moves. Why: some positive comments get labeled negative and some negative comments get labeled positive, so the totals stay close.</p></div>
    <div class="card"><div class="muted">Sort</div><div class="stat amb" id="jobSort"></div><p style="margin:.4em 0 0;font-size:.95rem">Messages go to the wrong pile. A person may catch the error on opening one.</p></div>
    <div class="card"><div class="muted">Trigger</div><div class="stat bad" id="jobTrig"></div><p style="margin:.4em 0 0;font-size:.95rem">People get the wrong action, and nobody looked first.</p></div>
   </div>
@@ -449,9 +480,45 @@ input[type=checkbox],input[type=radio]{width:auto}
  <p class="muted">Then someone has to choose a threshold. Every threshold trades misses for false alarms.</p></div>
 </section>
 
+<section class="slide" data-init="conf">
+ <div class="page">
+  <div class="kicker">Section 4 · Task 5 · Read the score</div>
+  <h2>How to read a confidence score</h2>
+  <div class="grid3">
+   <div class="card"><h3>What it is</h3><p style="margin:0">Every result has two parts: a <b>label</b> and a <b>score</b>. The label is the model's pick. The score shows how strongly the model leans toward that pick. Amazon Comprehend uses a scale from 0 to 1. Your project uses 0 to 100. They mean the same thing.</p></div>
+   <div class="card"><h3>Where the number comes from</h3><p>The model compares the input with patterns in the text it learned from. It gives every possible label a share, and the shares add up to 1.</p><p class="mono" style="margin:0">Positive 0.91<br>Neutral 0.06<br>Negative 0.03</p><p style="margin:6px 0 0">It reports the largest share: "Positive, 0.91."</p></div>
+   <div class="card"><h3>What it does not tell you</h3><p style="margin:0">It does not tell you the label is right. It tells you how closely the input matches what the model has seen before. Sarcasm uses positive words, so it matches "positive" closely and gets a high score. The model is confident and wrong.</p></div>
+  </div>
+  <h3 style="margin-top:16px">Read a score in three steps</h3>
+  <ol style="margin-top:0">
+   <li><b>Which label, on what scale?</b> "0.91" means little until you know it is 0.91 for <i>Positive</i> on a scale that ends at 1.</li>
+   <li><b>What did it score?</b> One sentence, one message, or a whole call. A polite last sentence can score Positive while the call was a complaint.</li>
+   <li><b>Who tested the score, and on whose data?</b> "0.90" means "right about 90 times in 100" only for the data the vendor tested on. Nobody has checked it on yours.</li>
+  </ol>
+  <div class="do"><b>What you do:</b> Setouchi Net's sentiment system labeled these ten customer messages. Every score is close to 0.90. Read each message. Select <b>Wrong label</b> on each one the system got wrong. Then select <b>Count them</b>.</div>
+  <div id="confItems"></div>
+  <div class="row noprint"><button class="btn" id="confCheck">Count them</button><span class="score" id="confScore"></span></div>
+  <div class="why" id="confWhy">
+   <div class="grid2">
+    <div class="card"><div class="muted">What the scores said</div><div class="stat">About 9 in 10 right</div></div>
+    <div class="card"><div class="muted">What you counted</div><div class="stat bad">6 in 10 right</div></div>
+   </div>
+   <h3 style="margin-top:14px">Why this happens</h3>
+   <p>The four wrong labels are sarcasm, a polite refusal, and two ordinary words that have a different meaning at an internet company. All four look like the model's training text on the surface, so all four scored high. The score measured the match. It never measured the meaning.</p>
+   <h3>What you do about it</h3>
+   <ul style="margin-top:0">
+    <li><b>Test the score on your own data.</b> You just did it with ten messages. The 100-item test later in this section does it properly.</li>
+    <li><b>Use the score to rank, not to prove.</b> A 0.95 is more likely right than a 0.55. Neither is certain.</li>
+    <li><b>Set the threshold by what each error costs,</b> which you do in Task 7.</li>
+    <li><b>Keep the person in a high-stakes decision,</b> whatever the score. A wrong answer with a high score is the one nobody questions.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
 <section class="slide" data-init="machines">
  <div class="page">
-  <div class="kicker">Section 4 · Task 5 · Two scoring machines</div>
+  <div class="kicker">Section 4 · Task 6 · Two scoring machines</div>
   <h2>Score the same message again and again</h2>
   <div class="card" style="margin-bottom:12px"><div class="muted">The message, sent to Setouchi Net</div><p style="margin:4px 0 0;font-size:1.08rem">"My internet has been off since morning. My father's medical alert pendant uses it. Sorry to trouble you."</p></div>
   <div class="do"><b>What you do:</b> Select each <b>Score it</b> button five times. Watch what each machine returns. Then write one sentence about each machine and select <b>Compare with the lecture's answer</b>.</div>
@@ -471,16 +538,18 @@ input[type=checkbox],input[type=radio]{width:auto}
     <div class="def" style="margin:0"><b>Machine A is not reliable.</b> A reliable system gives the right answer, consistently, on your kind of data. This one could not give the same answer twice. It ranged from 15 to 80 on one message.</div>
     <div class="def" style="margin:0"><b>Machine B is not relevant.</b> A relevant answer fits the decision you are making. This one gives the same answer every time, and the answer is about tone. The company has to decide urgency.</div>
    </div>
-   <p style="margin-top:12px">You need both. A score that changes on every try cannot be trusted. A score that never changes can still measure the wrong thing.</p>
+   <p style="margin-top:12px"><b>Why Machine A changes:</b> a GenAI model builds its answer one word at a time and picks each word with some randomness. The same prompt can produce a different answer on the next try. <b>Why Machine B never changes:</b> it counts words from a fixed list, and the list has no words for urgency.</p>
+   <p>You need both. A score that changes on every try cannot be trusted. A score that never changes can still measure the wrong thing.</p>
   </div>
  </div>
 </section>
 
 <section class="slide" data-init="lab">
  <div class="page">
-  <div class="kicker">Section 4 · Task 6 · The threshold lab · 3D</div>
+  <div class="kicker">Section 4 · Task 7 · The threshold lab · 3D</div>
   <h2>Set the threshold. Then build a rule.</h2>
   <p>Setouchi Net received <b>100</b> customer messages. A supervisor has already read all of them: <b>20 are urgent</b> and <b>80 are routine</b>. An AI system scored each message from 0 to 100 for urgency. A technician calls every customer at or above the threshold today. The technicians can make <b>30 calls</b> a day.</p>
+  <p><b>Why no threshold is perfect:</b> the scores of urgent and routine messages overlap. Wherever you put the line, some urgent messages fall below it or some routine messages fall above it. Moving the line only changes which error you get more of.</p>
   <div id="labView" class="three big"><div class="hint">Each ball is one message. Back row: urgent. Front row: routine. Drag to rotate.</div><div class="nogl">The 3D view needs an internet connection. The slider, the words, and the counts below still work.</div></div>
   <div class="key">
    <span><i style="background:var(--good)"></i>Urgent, gets a call</span>
@@ -522,7 +591,7 @@ input[type=checkbox],input[type=radio]{width:auto}
  <div class="page">
   <div class="kicker">Section 4 · What you just did</div>
   <h2>The 100-item test</h2>
-  <p>You do not need a vendor's accuracy claim. Anyone in an organization can run this test before the organization relies on a scoring system. You ran the last two steps in the threshold lab.</p>
+  <p>You do not need a vendor's accuracy claim. A vendor's number describes the vendor's test data. This test describes yours. You ran the last two steps in the threshold lab.</p>
   <div class="grid2">
    <ol style="margin:0;padding-left:22px">
     <li><b>Pull 100 real items</b> from your own organization, with the messy wording people really use.</li>
@@ -540,7 +609,15 @@ input[type=checkbox],input[type=radio]{width:auto}
     </table>
    </div>
   </div>
-  <div class="def" style="margin-top:16px"><b>Drift:</b> language changes, so a system that passed this test last year can fail it this year with no warning. Run the test on a schedule.</div>
+  <h3 style="margin-top:16px">What you do with the result</h3>
+  <table>
+   <tr><th style="width:38%">If you find</th><th>Then</th></tr>
+   <tr><td>The misses share a type, such as calm wording</td><td>Add a rule, as you did in the lab, or stop using the score for that type of message.</td></tr>
+   <tr><td>The system does worse for one group of writers</td><td>Do not use it to decide about individuals in that group. An average that hides a group is not fair to that group.</td></tr>
+   <tr><td>Misses cost more than false alarms</td><td>Set the threshold loose. If false alarms cost more, set it strict.</td></tr>
+   <tr><td>Too many errors at any threshold</td><td>Use the system only to spot patterns, or do not use it.</td></tr>
+  </table>
+  <div class="def"><b>Drift:</b> language changes, so a system that passed this test last year can fail it this year with no warning. Run the test on a schedule.</div>
   <div class="def"><b>Your Unit 5 project, Audit the Machine, is this test.</b> You score a set of messages by hand first. Then a GenAI tool scores the same set. Then you compare and write a one-page memo.</div>
  </div>
 </section>
@@ -554,7 +631,7 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <section class="slide" data-init="audit">
  <div class="page">
-  <div class="kicker">Section 5 · Task 7 · Timed</div>
+  <div class="kicker">Section 5 · Task 8 · Timed</div>
   <h2>Ten travel claims, 75 seconds</h2>
   <p>You review travel claims. Each line shows one calculation from a traveler's claim. An AI system has already checked the arithmetic and labeled each line <b>OK</b> or <b>Error</b>, with a confidence score.</p>
   <div class="do"><b>What you do:</b> Select <b>Start the clock</b>. For each line, select <b>Approve</b> if the arithmetic is right or <b>Send back</b> if it is wrong. You have 75 seconds. Any line you do not reach keeps the AI system's label.</div>
@@ -646,7 +723,7 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <section class="slide" data-init="build">
  <div class="page">
-  <div class="kicker">Section 6 · Task 8 · Design a review</div>
+  <div class="kicker">Section 6 · Task 9 · Design a review</div>
   <h2>Ten points for 2,000 travelers</h2>
   <p>The travel office from the timed task handles <b>2,000 claims</b> a month. Its AI system labels about <b>200</b> of them wrong. You have <b>10 points</b> to spend on human review. The numbers on this page are made up to show the trade.</p>
   <div class="do"><b>What you do:</b> Choose a design. Add what the review gets. Stay at 10 points or fewer. Select <b>Run one month</b>. Try different designs until you get the fewest wrong labels reaching travelers.</div>
@@ -668,7 +745,7 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <section class="slide" data-init="levels">
  <div class="page">
-  <div class="kicker">Section 6 · Task 9</div>
+  <div class="kicker">Section 6 · Task 10</div>
   <h2>Which design fits each system?</h2>
   <p>Match the design to the stakes first and the system's confidence second. Ask two questions: <b>How bad is one error for one person?</b> and <b>Can it be undone?</b></p>
   <div class="do"><b>What you do:</b> Select a card. Then select the design that fits it. On a laptop you can also drag the card. When every card is placed, select <b>Check my placement</b>.</div>
@@ -956,7 +1033,7 @@ INIT.invent = () => {
       const good=(!!s[1])===sel; if(good) ok++; b.classList.add(s[1]?'wrong':'right');
       return `<li><b>Sentence ${i+1}:</b> ${s[2]} ${good?'<span class="good">You had it.</span>':'<span class="bad">'+(s[1]?'You did not mark it.':'You marked it, and it is supported.')+'</span>'}</li>`; });
     $('#invScore').textContent=`${ok} of 5 sentences judged correctly`;
-    $('#invWhy').innerHTML=`<ul style="margin:0;padding-left:20px">${rep.join('')}</ul><p style="margin:10px 0 0">Sentences 3 and 4 read as smoothly as the true ones. Nothing in the summary marks them. Someone who trusts sentence 4 may drive a forklift that failed inspection.</p>`;
+    $('#invWhy').innerHTML=`<ul style="margin:0;padding-left:20px">${rep.join('')}</ul><p style="margin:10px 0 0"><b>Why a generator does this:</b> it writes the words most likely to come next. It has no step that checks its sentences against the source. A delivery update usually ends with a date, so it supplied one.</p><p style="margin:8px 0 0">Sentences 3 and 4 read as smoothly as the true ones. Nothing in the summary marks them. Someone who trusts sentence 4 may drive a forklift that failed inspection.</p>`;
     $('#invWhy').classList.add('show'); };
 };
 
@@ -1034,7 +1111,25 @@ INIT.fool = () => {
   live(); draw();
 };
 
-/* ---------- task 5: two machines ---------- */
+/* ---------- task 5: read the score ---------- */
+INIT.conf = () => {
+  const M=[['Thank you, the technician was on time and fixed it.','Positive','0.91',1],['Third outage this week. I want a refund.','Negative','0.92',1],
+   ['Oh wonderful, the bill went up again. Just perfect.','Positive','0.93',0,'Sarcasm. The customer is angry.'],['What time does the store close on Sunday?','Neutral','0.90',1],
+   ['It would be a little difficult to continue our contract.','Neutral','0.89',0,'A polite way to cancel. The customer is leaving.'],['The new router is fast. Very happy.','Positive','0.92',1],
+   ['Kill the old account and move everything to the new one, please.','Negative','0.90',0,'A routine request. "Kill" is an ordinary word for closing an account.'],['I waited two hours on hold and nobody answered.','Negative','0.91',1],
+   ['My speed test came back negative for packet loss. All good now.','Negative','0.88',0,'Good news. "Negative" means the test found no problem.'],['Please send me a copy of my invoice.','Neutral','0.90',1]];
+  let checked=false;
+  $('#confItems').innerHTML=M.map((m,i)=>`<div class="mail" data-i="${i}"><div class="row" style="margin:0;justify-content:space-between"><div class="body" style="margin:0;flex:1;min-width:240px">${i+1}. "${m[0]}"</div><div class="row" style="margin:0"><span class="ai ${m[1]==='Positive'?'safe':m[1]==='Negative'?'phish':'neut'}">${m[1]}, ${m[2]}</span><button class="opt" data-i="${i}">Wrong label</button></div></div><div class="why"></div></div>`).join('');
+  $$('#confItems .opt').forEach(b=>b.onclick=()=>{ if(!checked) b.classList.toggle('sel'); });
+  $('#confCheck').onclick=()=>{ checked=true; let ok=0, marked=0;
+    M.forEach((m,i)=>{ const w=$(`#confItems .mail[data-i="${i}"]`), b=w.querySelector('.opt'), sel=b.classList.contains('sel'); if(sel) marked++; b.classList.remove('sel');
+      const good=sel===!m[3]; if(good) ok++; if(!m[3]) b.classList.add('wrong');
+      const y=w.querySelector('.why'); y.innerHTML=m[3]?(sel?'<b class="bad">This label is correct.</b>':'') : `<b class="${sel?'good':'bad'}">${sel?'You caught it.':'Wrong label, and you did not mark it.'}</b> ${m[4]}`; if(y.innerHTML) y.classList.add('show'); });
+    $('#confScore').textContent=`You marked ${marked} as wrong. The system got 4 wrong: messages 3, 5, 7, and 9. You judged ${ok} of 10 correctly.`;
+    $('#confWhy').classList.add('show'); };
+};
+
+/* ---------- task 6: two machines ---------- */
 INIT.machines = () => {
   const MSG="My internet has been off since morning. My father's medical alert pendant uses it. Sorry to trouble you.";
   const A=[20,65,35,80,15]; let a=0,b=0;
@@ -1155,7 +1250,7 @@ fields.forEach(f=>{ if(saved[f.dataset.k]!=null) f.value=saved[f.dataset.k];
   f.addEventListener('input',()=>{ const d={}; fields.forEach(x=>d[x.dataset.k]=x.value); store.set('u5answers',d); const s=$('#pSaved'); if(s) s.textContent='Saved in this browser'; }); });
 INIT.plan = () => {
   const LBL={name:'My name',output:'1. What does my AI system return?',job:'2. What does my organization do with the output?',error:'3. Which error costs more, a miss or a false alarm? Why?',review:'4. Is a person in the loop, on the loop, or out of the loop? What does that person need for a real review?',
-    n0:'Notes: the earthquake alarm',svcNote:'Task 1: my note to the shift supervisor',n1:'Notes: my sentence that fooled the scorer',mNote:'Task 5: what is wrong with each machine',n3:'The practice that would have helped me most in the timed task',n2:'Notes: the closing question'};
+    n0:'Notes: the earthquake alarm',svcNote:'Task 1: my note to the shift supervisor',n1:'Notes: my sentence that fooled the scorer',mNote:'Task 6: what is wrong with each machine',n3:'The practice that would have helped me most in the timed task',n2:'Notes: the closing question'};
   $('#pDl').onclick=()=>{ const v={}; fields.forEach(f=>v[f.dataset.k]=f.value.trim());
     const tries=store.get('u5fool',[]).map(t=>`  "${t.text}" | I mean ${TL[t.mean]} | scorer said ${TL[t.lab]} | ${t.fooled?'fooled':'not fooled'}`).join('\n');
     const txt='Unit 5 Lecture: my answers and notes\n\n'+Object.keys(LBL).map(k=>`${LBL[k]}\n${v[k]||'(blank)'}\n`).join('\n')+'\nTask 4: my tries at fooling the tone scorer\n'+(tries||'  (none)')+'\n';
