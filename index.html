@@ -312,15 +312,15 @@ input[type=checkbox],input[type=radio]{width:auto}
  <div class="page">
   <div class="kicker">One step left from Unit 4</div>
   <h2>After cross-validation: what you do with the scores</h2>
-  <p>Last week you split the training data into equal parts, called folds. Each round trained a model on all the folds but one and tested it on the fold left out. That gave one score for each round. Here is what you do next, and why.</p>
+  <p>Last week you split 5,000 past clinic appointments into five equal parts, called folds. Each round built a model from four of the folds and tested it on the fifth. That gave five scores. Here is what you do next, and why.</p>
   <div class="grid2">
    <div class="card"><h3>The five scores from last week</h3>
     <table style="margin:0"><tr><th>Round</th><th>Score on the fold left out</th></tr>
      <tr><td>1</td><td>88%</td></tr><tr><td>2</td><td>91%</td></tr><tr><td>3</td><td class="bad"><b>62%</b></td></tr><tr><td>4</td><td>90%</td></tr><tr><td>5</td><td>89%</td></tr>
      <tr><td><b>Average</b></td><td><b>84%</b></td></tr></table></div>
-   <div class="card"><h3>Why you did it</h3>
-    <p>One split gives one score, and that score depends on which records happened to fall in the test part. With folds, every record is tested once, by a model that never saw it.</p>
-    <p style="margin:0">The fold models are a measuring tool. None of them is the model you will use.</p></div>
+   <div class="card"><h3>Why split the data into folds?</h3>
+    <p>Say you set aside 1,000 of the 5,000 appointments to test the model, and it scores 91 percent. Those 1,000 were chosen by chance. A different 1,000 might have scored 62 percent. One test gives one number, and you cannot tell whether it was a lucky draw.</p>
+    <p style="margin:0">With five folds you run the test five times. Each time a different 1,000 appointments are set aside, so every appointment gets one turn in the test group. Five scores show you whether the model does equally well on every part of the data.</p></div>
   </div>
   <h3 style="margin-top:16px">What you do next</h3>
   <table>
@@ -329,7 +329,7 @@ input[type=checkbox],input[type=radio]{width:auto}
    <tr><td><b>2</b></td><td><b>Look at how far apart the scores are.</b></td><td>Close scores mean the model behaves the same on every part of the data. One score far from the rest means one part of the data is different.</td></tr>
    <tr><td><b>3</b></td><td><b>Open the weak fold and read its records.</b></td><td>Round 3 scored 62 percent. Find what those records share: a time period, a site, a group of people. That is a data problem to fix, with the tools from Unit 4.</td></tr>
    <tr><td><b>4</b></td><td><b>Change one thing and run all the rounds again.</b></td><td>Cross-validation is how you compare choices, such as two ways to fill in missing values. Keep the choice with the higher average and the closer scores.</td></tr>
-   <tr><td><b>5</b></td><td><b>Train one final model on all of the training data.</b></td><td>The fold models each learned from only part of the data. The final model learns from all of it.</td></tr>
+   <tr><td><b>5</b></td><td><b>Train one final model on all of the training data.</b></td><td>Each round built its own model only so there was something to test. You do not keep any of those five. The final model is new, and it learns from all 5,000 appointments.</td></tr>
    <tr><td><b>6</b></td><td><b>Test the final model once on the test set you set aside.</b></td><td>The model has never seen the test set, so this is the score you report. If you test again after more changes, the test set is no longer unseen.</td></tr>
   </table>
   <div class="def"><b>The tie to tonight:</b> step 3 is the habit this whole unit teaches. A score tells you that something is wrong. Reading the records tells you what.</div>
