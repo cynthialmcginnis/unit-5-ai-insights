@@ -216,7 +216,7 @@ input[type=checkbox],input[type=radio]{width:auto}
  <div class="page">
   <div class="kicker">Unit 5 · Lecture</div>
   <h1>Interpreting and Applying AI-Generated Insights</h1>
-  <p class="lead">An artificial intelligence (AI) system gives you a label and a score. Tonight you do the system's work yourself, try to fool it, set its cutoff, audit it against a clock, and design the review around it.</p>
+  <p class="lead">An artificial intelligence (AI) system gives you a label and a score. Tonight you do the system's work yourself, try to fool it, set its threshold, audit it against a clock, and design the review around it.</p>
   <div id="coverCanvas" class="three"><div class="nogl">The 3D view needs an internet connection.</div></div>
   <p class="muted" style="margin-top:14px">Welcome to class tonight:</p>
   <div class="chips" id="coverNames"></div>
@@ -233,9 +233,9 @@ input[type=checkbox],input[type=radio]{width:auto}
    <li data-go="s1"><div><b>What a language service returns</b><br><span class="muted">You do the service's work, then catch a GenAI summary inventing facts</span></div></li>
    <li data-go="s2"><div><b>Sort, spot, trigger</b><br><span class="muted">You place eight systems where they belong</span></div></li>
    <li data-go="s3"><div><b>Same output, different meaning</b><br><span class="muted">You try to fool a tone scorer</span></div></li>
-   <li data-go="s4"><div><b>How far can you trust a score?</b><br><span class="muted">You test two scoring machines and set a cutoff in 3D</span></div></li>
+   <li data-go="s4"><div><b>How far can you trust a score?</b><br><span class="muted">You test two scoring machines and set a threshold in 3D</span></div></li>
    <li data-go="s5"><div><b>Trusting the system too much</b><br><span class="muted">You audit ten travel claims against a clock</span></div></li>
-   <li data-go="s6"><div><b>When a person checks the decision</b><br><span class="muted">You design a review with a limited budget</span></div></li>
+   <li data-go="s6"><div><b>High stakes: who decides</b><br><span class="muted">You design a review with a limited budget</span></div></li>
    <li data-go="close"><div><b>Back to the question</b><br><span class="muted">Class discussion</span></div></li>
    <li data-go="cap"><div><b>Your capstone, then the AI Lab Sprint</b><br><span class="muted">Four answers about your own AI system</span></div></li>
   </ol>
@@ -294,7 +294,7 @@ input[type=checkbox],input[type=radio]{width:auto}
    <tr><td><b>Output</b></td><td>What an AI system returns after it processes an input.</td><td>A label, a score, a list of phrases, or a written summary</td></tr>
    <tr><td><b>Label</b></td><td>A category the system assigns.</td><td>"Negative," "spam," "urgent"</td></tr>
    <tr><td><b>Score</b> (also called a confidence score)</td><td>A number that shows how strongly the system leans toward its answer. A high score is not proof.</td><td>"Negative, 0.92" or "urgency 85 out of 100"</td></tr>
-   <tr><td><b>Cutoff</b> (also called a threshold)</td><td>The score where a system or a person switches from one action to another.</td><td>A technician calls every customer who scores 50 or higher</td></tr>
+   <tr><td><b>Threshold</b> (also called a threshold)</td><td>The score where a system or a person switches from one action to another.</td><td>A technician calls every customer who scores 50 or higher</td></tr>
    <tr><td><b>Miss</b> (false negative)</td><td>The system fails to flag something that is a problem.</td><td>A message about a burning smell scores 12</td></tr>
    <tr><td><b>False alarm</b> (false positive)</td><td>The system flags something that is fine.</td><td>The earthquake alarm on January 5, 2018</td></tr>
    <tr><td><b>Sentiment analysis</b></td><td>A type of AI that labels the tone of text as positive, negative, or neutral.</td><td>Sorting 5,000 survey comments by tone</td></tr>
@@ -351,8 +351,8 @@ input[type=checkbox],input[type=radio]{width:auto}
   <div class="row noprint"><button class="btn" id="invCheck">Check my picks</button><span class="score" id="invScore"></span></div>
   <div class="card why" id="invWhy"></div>
   <div class="grid2" style="margin-top:14px">
-   <div class="card"><h3>Picking a label</h3><p style="margin:0">Sentiment analysis and classification choose from a fixed list. They fail by picking the wrong label. You check them by comparing a sample with a person's labels.</p></div>
-   <div class="card"><h3>Writing new text</h3><p style="margin:0">GenAI summaries and chatbots write words that were on no list. They fail by stating things that were never in the source. You check them the way you just did: against the source, line by line.</p></div>
+   <div class="card"><h3>Classifiers and extractors</h3><p style="margin:0">Sentiment, entities, and key phrases pick a label from a fixed list or pull items out of the text. They fail with a wrong label or a missed item. You can see the error when you read the source. You check them by comparing a sample with a person's labels.</p></div>
+   <div class="card"><h3>Generators (GenAI)</h3><p style="margin:0">Summaries, drafted replies, and chatbots write new text. They fail by leaving something out or by stating what the source never said, and the text still reads smoothly. You check them the way you just did: against the source, line by line.</p></div>
   </div>
   <div class="card" style="margin-top:14px"><h3>A real case: the city chatbot</h3>
    <p style="margin:0">In October 2023, New York City put a GenAI chatbot on its website to answer business owners' questions about city rules. In March 2024, reporters at The Markup tested it. It told them employers could keep part of their workers' tips, landlords could turn away tenants who pay with housing vouchers, and restaurants could refuse cash. All three answers were wrong under New York law. The answers read like official guidance, and nothing on the screen warned the reader.</p></div>
@@ -435,6 +435,7 @@ input[type=checkbox],input[type=radio]{width:auto}
   <div class="kicker">Discussion · No answer on this page</div>
   <div class="bigq">Take the sentence from your own work that fooled the scorer.</div>
   <p class="lead">Suppose your organization used that label to decide something about a person. What would go wrong, and who would notice?</p>
+  <div class="def"><b>Three questions for any output:</b> What text was this system trained and tested on? What does this label mean in my setting? What happens to the person on the other end if it is wrong?</div>
   <label class="f" for="n1">My notes</label>
   <textarea id="n1" data-k="n1"></textarea>
   <div class="row noprint"><button class="btn" data-pick>Pick a student</button></div>
@@ -445,7 +446,7 @@ input[type=checkbox],input[type=radio]{width:auto}
 <section class="slide sectiontitle" id="s4">
  <div class="page"><div class="bignum">4</div><div class="kicker">Section 4</div><h2>How far can you trust a score?</h2>
  <p class="lead">Two questions come before any decision. Is the score reliable? Is it relevant?</p>
- <p class="muted">Then someone has to choose a cutoff. Every cutoff trades misses for false alarms.</p></div>
+ <p class="muted">Then someone has to choose a threshold. Every threshold trades misses for false alarms.</p></div>
 </section>
 
 <section class="slide" data-init="machines">
@@ -467,8 +468,8 @@ input[type=checkbox],input[type=radio]{width:auto}
   <div class="row noprint"><button class="btn" id="mShow" disabled>Compare with the lecture's answer</button></div>
   <div class="why" id="mWhy">
    <div class="grid2">
-    <div class="def" style="margin:0"><b>Machine A is not reliable.</b> A reliable system gives the same answer to the same input, and its scores mean what they say. This one ranged from 15 to 80 on one message.</div>
-    <div class="def" style="margin:0"><b>Machine B is not relevant.</b> A relevant score measures the thing you need to decide. This one gives the same answer every time, and the answer is about tone. The company needs urgency.</div>
+    <div class="def" style="margin:0"><b>Machine A is not reliable.</b> A reliable system gives the right answer, consistently, on your kind of data. This one could not give the same answer twice. It ranged from 15 to 80 on one message.</div>
+    <div class="def" style="margin:0"><b>Machine B is not relevant.</b> A relevant answer fits the decision you are making. This one gives the same answer every time, and the answer is about tone. The company has to decide urgency.</div>
    </div>
    <p style="margin-top:12px">You need both. A score that changes on every try cannot be trusted. A score that never changes can still measure the wrong thing.</p>
   </div>
@@ -477,9 +478,9 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <section class="slide" data-init="lab">
  <div class="page">
-  <div class="kicker">Section 4 · Task 6 · The cutoff lab · 3D</div>
-  <h2>Set the cutoff. Then build a rule.</h2>
-  <p>Setouchi Net received <b>100</b> customer messages. A supervisor has already read all of them: <b>20 are urgent</b> and <b>80 are routine</b>. An AI system scored each message from 0 to 100 for urgency. A technician calls every customer at or above the cutoff today. The technicians can make <b>30 calls</b> a day.</p>
+  <div class="kicker">Section 4 · Task 6 · The threshold lab · 3D</div>
+  <h2>Set the threshold. Then build a rule.</h2>
+  <p>Setouchi Net received <b>100</b> customer messages. A supervisor has already read all of them: <b>20 are urgent</b> and <b>80 are routine</b>. An AI system scored each message from 0 to 100 for urgency. A technician calls every customer at or above the threshold today. The technicians can make <b>30 calls</b> a day.</p>
   <div id="labView" class="three big"><div class="hint">Each ball is one message. Back row: urgent. Front row: routine. Drag to rotate.</div><div class="nogl">The 3D view needs an internet connection. The slider, the words, and the counts below still work.</div></div>
   <div class="key">
    <span><i style="background:var(--good)"></i>Urgent, gets a call</span>
@@ -489,13 +490,13 @@ input[type=checkbox],input[type=radio]{width:auto}
   </div>
   <div class="grid2">
    <div>
-    <div class="row" style="margin-top:0"><span style="white-space:nowrap">Cutoff: <b id="labCut" class="stat" style="font-size:1.6rem">50</b></span><input type="range" id="labSlider" min="0" max="100" step="5" value="50" aria-label="Cutoff score"></div>
+    <div class="row" style="margin-top:0"><span style="white-space:nowrap">Threshold: <b id="labCut" class="stat" style="font-size:1.6rem">50</b></span><input type="range" id="labSlider" min="0" max="100" step="5" value="50" aria-label="Threshold score"></div>
     <div class="do" style="margin-top:6px"><b>What you do:</b>
      <ol>
-      <li>Move only the cutoff. Find the fewest misses you can get with 30 calls or fewer. Select <b>Record this setting</b>.</li>
+      <li>Move only the threshold. Find the fewest misses you can get with 30 calls or fewer. Select <b>Record this setting</b>.</li>
       <li>Select <b>Read the missed messages</b>. Look for words they share.</li>
       <li>Build a rule: select words below. A message with a selected word gets a call at any score.</li>
-      <li>Use the cutoff and the words together. Reach <b>0 misses with 30 calls or fewer</b>.</li>
+      <li>Use the threshold and the words together. Reach <b>0 misses with 30 calls or fewer</b>.</li>
      </ol></div>
    </div>
    <div>
@@ -521,14 +522,14 @@ input[type=checkbox],input[type=radio]{width:auto}
  <div class="page">
   <div class="kicker">Section 4 · What you just did</div>
   <h2>The 100-item test</h2>
-  <p>You do not need a vendor's accuracy claim. Anyone in an organization can run this test before the organization relies on a scoring system. You ran the last two steps in the cutoff lab.</p>
+  <p>You do not need a vendor's accuracy claim. Anyone in an organization can run this test before the organization relies on a scoring system. You ran the last two steps in the threshold lab.</p>
   <div class="grid2">
    <ol style="margin:0;padding-left:22px">
     <li><b>Pull 100 real items</b> from your own organization, with the messy wording people really use.</li>
-    <li><b>Decide each one yourself first.</b> Write your answer down before you see the system's answer.</li>
+    <li><b>Have someone who knows the work label each one first,</b> without seeing the system's answer.</li>
     <li><b>Run the same 100 through the system.</b></li>
     <li><b>Count four numbers:</b> problems it flagged, problems it missed, false alarms, and items it correctly left alone.</li>
-    <li><b>Read every miss and every false alarm.</b> Look for what they share.</li>
+    <li><b>Read the misses and sort them by type.</b> Then check them by group. Does the system do worse on short messages, or on writers whose first language is not English?</li>
    </ol>
    <div class="card">
     <h3>The four numbers</h3>
@@ -539,7 +540,8 @@ input[type=checkbox],input[type=radio]{width:auto}
     </table>
    </div>
   </div>
-  <div class="def" style="margin-top:16px"><b>Your Unit 5 project, Audit the Machine, is this test.</b> You score a set of messages by hand first. Then a GenAI tool scores the same set. Then you compare and write a one-page memo.</div>
+  <div class="def" style="margin-top:16px"><b>Drift:</b> language changes, so a system that passed this test last year can fail it this year with no warning. Run the test on a schedule.</div>
+  <div class="def"><b>Your Unit 5 project, Audit the Machine, is this test.</b> You score a set of messages by hand first. Then a GenAI tool scores the same set. Then you compare and write a one-page memo.</div>
  </div>
 </section>
 
@@ -591,20 +593,22 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <section class="slide">
  <div class="page">
-  <div class="kicker">Section 5 · A real case and six fixes</div>
+  <div class="kicker">Section 5 · A real case and six practices</div>
   <h2>A person in the process is not a review</h2>
   <p>In 2003, during the war in Iraq, United States Army Patriot air defense systems identified two friendly aircraft as enemy missiles and shot them down. Three aircrew died. A Defense Science Board review found that the system operated in a largely automatic way and that operators had been trained to trust its software. The board recommended more operator involvement and control, and changes to the software, the displays, and the training.</p>
   <p>Operators were present both times. Being present did not give them the evidence, the training, or the practice to question the system.</p>
-  <h3>Six ways to reduce automation bias</h3>
+  <h3>Why careful people do this</h3>
+  <p>The system is usually right. Its output looks certain. The reviewer has no time. Disagreeing costs more than agreeing. Telling people to "stay alert" does not change any of these. The process has to make checking the easy path.</p>
+  <h3>Six practices that reduce automation bias</h3>
   <ol class="steps6">
-   <li><b>Decide first.</b> Make your own call before you see the system's answer.</li>
-   <li><b>Show the evidence with the score.</b> The reviewer sees the original item, and the number comes second.</li>
-   <li><b>Check a second source</b> that does not depend on the system.</li>
-   <li><b>Sample what the system cleared.</b> Misses hide in the pile nobody reads.</li>
-   <li><b>Count both kinds of error</b> on a schedule: misses and false alarms.</li>
-   <li><b>Give reviewers time and authority.</b> Disagreeing with the system must carry no penalty.</li>
+   <li><b>Decide first, then look.</b> The reviewer forms a view before the label appears.</li>
+   <li><b>Keep the source beside the output.</b> The label sits next to the full message. The summary sits next to the document.</li>
+   <li><b>Get a second source for anything that matters.</b> A flag starts a look at other evidence. A flag alone is never grounds for action.</li>
+   <li><b>Audit what the system cleared.</b> A random sample of the unflagged pile is the only way to find misses.</li>
+   <li><b>Make disagreeing cheap.</b> One click to overrule, no penalty, and a log of overrides that someone reads.</li>
+   <li><b>Staff the review honestly.</b> A reviewer with 15 seconds an item cannot check anything.</li>
   </ol>
-  <label class="f" for="n3">Which one fix would have helped you most in the timed task? Why?</label>
+  <label class="f" for="n3">Which one practice would have helped you most in the timed task? Why?</label>
   <textarea id="n3" data-k="n3"></textarea>
   <div class="row noprint"><button class="btn" data-pick>Pick a student</button></div>
  </div>
@@ -612,9 +616,32 @@ input[type=checkbox],input[type=radio]{width:auto}
 
 <!-- ============ SECTION 6 ============ -->
 <section class="slide sectiontitle" id="s6">
- <div class="page"><div class="bignum">6</div><div class="kicker">Section 6</div><h2>When a person checks the decision</h2>
+ <div class="page"><div class="bignum">6</div><div class="kicker">Section 6</div><h2>High stakes: who decides</h2>
  <p class="lead">Some decisions are cheap to get wrong and easy to undo. Others change a person's life.</p>
- <p class="muted">You design a review process with a limited budget and run it for a month.</p></div>
+ <p class="muted">A decision is <b>high-stakes</b> when it affects someone's health, money, job, education, freedom, or safety, and when it is hard to undo. You design a review with a limited budget and run it for a month.</p></div>
+</section>
+
+<section class="slide">
+ <div class="page">
+  <div class="kicker">Section 6 · Three designs and five needs</div>
+  <h2>How is the person involved?</h2>
+  <table>
+   <tr><th style="width:22%">Design</th><th>How it works</th><th>Example</th><th style="width:20%">Fits</th></tr>
+   <tr><td><b>Human in the loop</b></td><td>The system recommends. A person decides every case.</td><td>A pharmacist approves each refill the system suggests.</td><td>High stakes</td></tr>
+   <tr><td><b>Human on the loop</b></td><td>The system acts. A person watches and can step in or reverse it.</td><td>A system locks an account after a risky login. An analyst watches, and the owner can unlock it with a call.</td><td>Medium stakes, easy to undo</td></tr>
+   <tr><td><b>Human out of the loop</b></td><td>The system acts alone. A person audits a sample now and then.</td><td>A junk mail filter</td><td>Low stakes</td></tr>
+  </table>
+  <p>Most failures come from running a high-stakes decision on a low-stakes design. High confidence never takes the person out of a high-stakes decision. A wrong answer with a high score is the most dangerous kind, because nobody questions it.</p>
+  <h3>Five things a real review needs</h3>
+  <table>
+   <tr><td style="width:22%"><b>Time</b></td><td>Enough to read the source, not only the label.</td></tr>
+   <tr><td><b>Information</b></td><td>The original message or document, and what the system based its output on.</td></tr>
+   <tr><td><b>Authority</b></td><td>The power to overrule the system without asking permission.</td></tr>
+   <tr><td><b>A name</b></td><td>One identified person or office answers for the decision. "The system flagged it" is not an answer.</td></tr>
+   <tr><td><b>A way back</b></td><td>The affected person is told, given a reason, and given a way to contest the decision.</td></tr>
+  </table>
+  <p>Take away any one and the review is a formality.</p>
+ </div>
 </section>
 
 <section class="slide" data-init="build">
@@ -622,14 +649,14 @@ input[type=checkbox],input[type=radio]{width:auto}
   <div class="kicker">Section 6 · Task 8 · Design a review</div>
   <h2>Ten points for 2,000 travelers</h2>
   <p>The travel office from the timed task handles <b>2,000 claims</b> a month. Its AI system labels about <b>200</b> of them wrong. You have <b>10 points</b> to spend on human review. The numbers on this page are made up to show the trade.</p>
-  <div class="do"><b>What you do:</b> Choose when a person checks the AI system's label. Add what that reviewer gets. Stay at 10 points or fewer. Select <b>Run one month</b>. Try different designs until you get the fewest wrong labels reaching travelers.</div>
+  <div class="do"><b>What you do:</b> Choose a design. Add what the review gets. Stay at 10 points or fewer. Select <b>Run one month</b>. Try different designs until you get the fewest wrong labels reaching travelers.</div>
   <div class="grid2">
    <div class="card">
-    <h3>1. When does a person check the AI system's label?</h3>
+    <h3>1. Which design?</h3>
     <div id="bldPlace"></div>
    </div>
    <div class="card">
-    <h3>2. What does the reviewer get?</h3>
+    <h3>2. What does the review get?</h3>
     <div id="bldAdds"></div>
    </div>
   </div>
@@ -642,9 +669,9 @@ input[type=checkbox],input[type=radio]{width:auto}
 <section class="slide" data-init="levels">
  <div class="page">
   <div class="kicker">Section 6 · Task 9</div>
-  <h2>How much review does each system need?</h2>
-  <p>Two questions set the level: <b>How bad is one error for one person?</b> and <b>Can it be undone?</b> Place each system at the <b>lowest</b> level that is still safe.</p>
-  <div class="do"><b>What you do:</b> Select a card. Then select the level where it belongs. On a laptop you can also drag the card. When every card is placed, select <b>Check my placement</b>.</div>
+  <h2>Which design fits each system?</h2>
+  <p>Match the design to the stakes first and the system's confidence second. Ask two questions: <b>How bad is one error for one person?</b> and <b>Can it be undone?</b></p>
+  <div class="do"><b>What you do:</b> Select a card. Then select the design that fits it. On a laptop you can also drag the card. When every card is placed, select <b>Check my placement</b>.</div>
   <div id="lvlGame"></div>
  </div>
 </section>
@@ -656,7 +683,7 @@ input[type=checkbox],input[type=radio]{width:auto}
   <h2>Back to the question</h2>
   <div class="bigq">An internet company's AI system scores every customer message from 0 to 100 for urgency. A technician calls only the customers whose messages score 50 or higher. One message scores 12.</div>
   <p class="lead">What would you need to know before you agreed that nobody has to call that customer today?</p>
-  <p class="muted">Use tonight's terms: reliable, relevant, cutoff, miss, false alarm, automation bias, and what a real review needs.</p>
+  <p class="muted">Use tonight's terms: reliable, relevant, threshold, miss, false alarm, automation bias, and the three designs, and the five things a real review needs.</p>
   <label class="f" for="n2">My notes</label>
   <textarea id="n2" data-k="n2"></textarea>
   <div class="row noprint"><button class="btn" data-pick>Pick a student</button></div>
@@ -675,7 +702,7 @@ input[type=checkbox],input[type=radio]{width:auto}
   <label class="f" for="p2">2. What does my organization do with the output?</label>
   <select id="p2" data-k="job"><option value="">Choose</option><option>Sort: it puts each item in a pile for a person</option><option>Spot: it shows a pattern across many items</option><option>Trigger: it starts an action automatically</option><option>Not sure yet</option></select>
   <label class="f" for="p3">3. Which error costs more in my organization, a miss or a false alarm? Why?</label><textarea id="p3" data-k="error"></textarea>
-  <label class="f" for="p4">4. When does a person check my AI system's output, and what does that person need for a real review?</label><p class="hintp">Before the output is acted on, while it is acted on, or afterward. Then time, evidence, skill, authority, and no penalty.</p><textarea id="p4" data-k="review"></textarea>
+  <label class="f" for="p4">4. Is a person in the loop, on the loop, or out of the loop? What does that person need for a real review?</label><p class="hintp">Then time, information, authority, a name, and a way back.</p><textarea id="p4" data-k="review"></textarea>
   <div class="row noprint"><button class="btn" id="pDl">Download my answers</button><button class="btn ghost" id="pClear">Clear my answers</button><span class="saved" id="pSaved"></span></div>
  </div>
 </section>
@@ -687,8 +714,8 @@ input[type=checkbox],input[type=radio]{width:auto}
   <h2>What you did tonight</h2>
   <div class="grid3">
    <div class="card"><h3>Read</h3><ul style="padding-left:18px;margin:0"><li>You did a language service's work and found what its outputs left out.</li><li>You caught a GenAI summary inventing a promise and reversing a fact.</li><li>You fooled a tone scorer with words from your own work.</li></ul></div>
-   <div class="card"><h3>Test</h3><ul style="padding-left:18px;margin:0"><li>You saw one machine fail on reliability and another on relevance.</li><li>You set a cutoff and traded misses for false alarms.</li><li>You read the misses and built a rule that fixed them.</li></ul></div>
-   <div class="card"><h3>Decide</h3><ul style="padding-left:18px;margin:0"><li>You placed systems as sort, spot, or trigger.</li><li>You met automation bias in your own timed results.</li><li>You designed a review and matched the amount of review to the cost of one error.</li></ul></div>
+   <div class="card"><h3>Test</h3><ul style="padding-left:18px;margin:0"><li>You saw one machine fail on reliability and another on relevance.</li><li>You set a threshold and traded misses for false alarms.</li><li>You read the misses and built a rule that fixed them.</li></ul></div>
+   <div class="card"><h3>Decide</h3><ul style="padding-left:18px;margin:0"><li>You placed systems as sort, spot, or trigger.</li><li>You met automation bias in your own timed results.</li><li>You designed a review and matched the design to the stakes.</li></ul></div>
   </div>
   <h3 style="margin-top:18px">This week (all times Japan Standard Time)</h3>
   <table>
@@ -829,7 +856,7 @@ function textSprite(txt,pos,size=.6,color){
   s.scale.set(size*6,size,1); s.position.copy(pos); return s;
 }
 
-/* ---------- the 100 messages used on the cover and in the cutoff lab ---------- */
+/* ---------- the 100 messages used on the cover and in the threshold lab ---------- */
 const ITEMS = (()=>{ const out=[];
   const uw={40:'burning',30:'sparks',20:'medical',10:'burning'};
   [95,95,90,90,85,85,80,80,75,75,70,70,65,60,55,50,40,30,20,10].forEach(s=>out.push({s,urgent:true,w:uw[s]||''}));
@@ -854,7 +881,7 @@ function paint(list, cut, words){
 }
 const NOWORDS = new Set();
 
-/* cover 3D: the cutoff wall sweeps back and forth */
+/* cover 3D: the threshold wall sweeps back and forth */
 INIT.cover = () => {
   const S=make3D($('#coverCanvas'),{cam:[0,2.6,8.6],look:[0,-.3,0],fov:38,ry:-.15,rx:.08}); if(!S) return;
   const floorY=-1.4, list=buildMessages(S.group,floorY);
@@ -969,13 +996,13 @@ INIT.jobsort = () => binGame($('#jobGame'),['Sort','Spot','Trigger'],[
   ['A supply office runs 2,000 delivery comments a month through sentiment analysis to compare vendors.',1,'The office compares vendors across thousands of comments.'],
   ['A finance office reads scanned receipts and sends each one to the clerk who handles that kind of expense.',0,'A clerk handles every receipt.'],
   ['A language school analyzes 10,000 practice exercises to find the grammar point learners miss most.',1,'The school is looking for a pattern across all learners.']]);
-INIT.levels = () => binGame($('#lvlGame'),['Level 1: no review','Level 2: a person checks a sample','Level 3: a person reviews the uncertain cases','Level 4: a person decides every case'],[
-  ['A phone app translates a restaurant menu.',0,'An error costs a surprise at dinner.'],
-  ['An internet company\'s system sends each support ticket to a team. A technician on that team reads the ticket.',1,'A wrong route costs minutes. A weekly sample shows whether routing is getting worse.'],
-  ['A supply office\'s model scores 3,000 purchase requests a month for "unusual." Staff have time to read about 200.',2,'Staff read the middle scores, where the system is least sure, and a small sample of the rest.'],
-  ['A model scores tuition assistance requests. A low score means the request is denied.',3,'A denial changes a person\'s year, and the person cannot undo it alone.'],
-  ['A face-matching system at an installation gate reports "no match" for a person holding a valid identification card.',3,'A guard checks the card in person before anyone is turned away.'],
-  ['An email filter moves suspected junk mail into a folder. The owner can move a message back with one click.',1,'The error is easy to undo. A weekly sample shows how many real emails are being held.']]);
+INIT.levels = () => binGame($('#lvlGame'),['Human out of the loop: the system acts alone, and a person audits a sample','Human on the loop: the system acts, and a person watches and can reverse it','Human in the loop: a person decides every case'],[
+  ['A phone app translates a restaurant menu.',0,'Low stakes. An error costs a surprise at dinner.'],
+  ['A security system locks an employee account after a risky login. An analyst watches the locks, and the employee can unlock the account with a call.',1,'Medium stakes and easy to undo.'],
+  ['A model scores tuition assistance requests. A low score means the request is denied.',2,'High stakes. A denial affects a person\'s education and money. A person decides with the request in front of them, and the student can appeal.'],
+  ['An email filter moves suspected junk mail into a folder. The owner can move a message back with one click.',0,'Low stakes. Audit a sample each month to see how many real emails it holds.'],
+  ['A supply office\'s model holds purchase requests it scores as unusual. Staff watch the list of holds and can release one in a minute.',1,'Medium stakes. A wrong hold delays an order, and staff can reverse it.'],
+  ['A face-matching system at an installation gate reports "no match" for a person holding a valid identification card.',2,'High stakes. A guard checks the card in person before anyone is turned away, whatever the confidence score.']]);
 
 /* ---------- task 4: fool the tone scorer ---------- */
 const POS='great good love loved thanks thank happy excellent wonderful perfect nice best awesome pleased positive easy fast helpful amazing fine glad win success safe clear enjoy fantastic appreciate smooth improved better'.split(' ');
@@ -1019,7 +1046,7 @@ INIT.machines = () => {
   $('#mShow').onclick=()=>$('#mWhy').classList.add('show');
 };
 
-/* ---------- task 6: cutoff lab ---------- */
+/* ---------- task 6: threshold lab ---------- */
 INIT.lab = () => {
   const WORDS=['burning','hot','sparks','smoke','medical','down'], words=new Set();
   const S=make3D($('#labView'),{cam:[-.7,3.4,10.6],look:[-.7,0,0],fov:36,ry:-.1,rx:.1,drag:true});
@@ -1032,7 +1059,7 @@ INIT.lab = () => {
     add('Urgent (20)',-7.2,floorY+.45,-1.25,.8); add('Routine (80)',-7.3,floorY+.45,1.25,.8);
     add('score 0',-5,floorY+.3,3.1,.62,css('--ink')); add('score 50',0,floorY+.3,3.1,.62,css('--ink')); add('score 100',5,floorY+.3,3.1,.62,css('--ink'));
     const lq=add('no call',-3,floorY+3.3,0,.7,css('--ink')), ln=add('technician calls today',3,floorY+3.3,0,.7,css('--accent'));
-    const wl=add('cutoff',0,floorY+3.85,0,.65,css('--accent'));
+    const wl=add('threshold',0,floorY+3.85,0,.65,css('--accent'));
     S.tick=()=>{ const target=(+$('#labSlider').value-2.5)/10-5; wall.position.x+=(target-wall.position.x)*.2; wl.position.x=wall.position.x;
       lq.position.x=(wall.position.x-5.3)/2; ln.position.x=(wall.position.x+5.3)/2; lq.visible=wall.position.x>-3.6; ln.visible=wall.position.x<2.4;
       list.forEach(o=>{ o.m.position.y+=((o.y+(o.lift||0))-o.m.position.y)*.15; }); };
@@ -1045,15 +1072,15 @@ INIT.lab = () => {
     $('#labCalls').textContent=calls; $('#labCalls').className='n'+(calls>30?' bad':'');
     $('#labMsg').innerHTML=`${calls>30?'<b class="bad">Over the limit of 30 calls.</b> ':''}<b class="${t.fn?'bad':'good'}">${t.fn}</b> urgent ${t.fn===1?'customer gets':'customers get'} no call today.`;
     if(list) paint(list,c,words);
-    const w=$('#labWin'); if(t.fn===0&&calls<=30){ w.innerHTML=`<h3 class="good">0 misses with ${calls} calls</h3><p>The cutoff alone could not do this. The system gives high scores to alarming words and capital letters, so calm customers with serious problems score low. That is a <b>relevance</b> problem, and no cutoff fixes it.</p><p style="margin:0">The fix came from you. You read the misses, saw what they shared, and wrote a rule. Each word you added also cost calls, so you had to choose your words and move the cutoff.</p>`; w.classList.add('show'); } else w.classList.remove('show');
+    const w=$('#labWin'); if(t.fn===0&&calls<=30){ w.innerHTML=`<h3 class="good">0 misses with ${calls} calls</h3><p>The threshold alone could not do this. The system gives high scores to alarming words and capital letters, so calm customers with serious problems score low. That is a <b>relevance</b> problem, and no threshold fixes it.</p><p style="margin:0">The fix came from you. You read the misses, saw what they shared, and wrote a rule. Each word you added also cost calls, so you had to choose your words and move the threshold.</p>`; w.classList.add('show'); } else w.classList.remove('show');
     return {c,t,calls}; };
   $('#labSlider').oninput=run;
   $$('#labWords .opt').forEach(b=>b.onclick=()=>{ const w=b.dataset.w; if(words.has(w)){ words.delete(w); b.classList.remove('sel'); } else { words.add(w); b.classList.add('sel'); } run(); });
   $('#labRec').onclick=()=>{ const r=run(); log.push(`<tr><td>${r.c}</td><td>${[...words].join(', ')||'none'}</td><td>${r.t.fn}</td><td>${r.t.fp}</td><td class="${r.calls>30?'bad':''}">${r.calls}</td></tr>`);
-    $('#labLog').innerHTML='<tr><th>Cutoff</th><th>Words</th><th>Misses</th><th>False alarms</th><th>Calls</th></tr>'+log.join(''); };
+    $('#labLog').innerHTML='<tr><th>Threshold</th><th>Words</th><th>Misses</th><th>False alarms</th><th>Calls</th></tr>'+log.join(''); };
   const MISSED=[[40,'"The router is quite warm and there is a faint <b>burning</b> smell. No rush, whenever someone is free."'],[30,'"I saw a couple of small <b>sparks</b> at the wall box when it rained. It works fine now. Just letting you know."'],[20,'"Internet has been off since morning. My father\'s <b>medical</b> alert pendant uses it. Sorry to trouble you."'],[10,'"The adapter makes a buzzing sound and the plug looks a little brown, like <b>burning</b>. Thanks."']];
   $('#labRead').onclick=()=>{ const c=+$('#labSlider').value, m=MISSED.filter(x=>x[0]<c);
-    $('#labMissed').innerHTML=`<h3>Urgent messages that scored below ${c}</h3>`+(m.length?`<table style="margin:0"><tr><th style="width:14%">Score</th><th>Message</th></tr>${m.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join('')}</table><p style="margin:8px 0 0" class="muted">Each word you add also catches routine messages. "Hot" catches six questions about phone hotspots. "Down" catches twelve slow-speed complaints.</p>`:'<p style="margin:0">None at this cutoff. Raise the cutoff to 45 and select the button again.</p>');
+    $('#labMissed').innerHTML=`<h3>Urgent messages that scored below ${c}</h3>`+(m.length?`<table style="margin:0"><tr><th style="width:14%">Score</th><th>Message</th></tr>${m.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`).join('')}</table><p style="margin:8px 0 0" class="muted">Each word you add also catches routine messages. "Hot" catches six questions about phone hotspots. "Down" catches twelve slow-speed complaints.</p>`:'<p style="margin:0">None at this threshold. Raise the threshold to 45 and select the button again.</p>');
     $('#labMissed').classList.add('show'); };
   run();
 };
@@ -1094,8 +1121,11 @@ window.addEventListener('beforeprint',()=>$$('#biasWhy .barh').forEach(b=>b.styl
 
 /* ---------- task 8: design a review ---------- */
 INIT.build = () => {
-  const PL=[['after','Afterward: the system pays or denies the claim, and a person checks a sample of claims later',1,5,0],['during','While it happens: the system pays or denies the claim, and a person watches and can stop a payment',2,15,.5],['before','Beforehand: the system only suggests a label, and a person decides every claim',4,40,1]];
-  const AD=[['time','Time: two minutes a claim, in place of 20 seconds',3,20],['evidence','Evidence: the receipts on screen next to the label',1,15],['skill','Skill: training in how this system fails',2,10],['authority','Authority: the reviewer can overrule the system',1,5],['nopen','No penalty: overruling takes one click, the same as agreeing',1,10],['first','Decide first: the label stays hidden until the reviewer answers',2,15]];
+  const PL=[['out','Human out of the loop: the system pays or denies each claim alone, and a person audits a sample later',1,5,0],['on','Human on the loop: the system pays or denies each claim, and a person watches and can reverse it',2,15,.5],['in','Human in the loop: the system only suggests a label, and a person decides every claim',4,40,1]];
+  const AD=[['time','Time: two minutes a claim, in place of 20 seconds',3,20,''],['info','Information: the receipts on screen beside the label',1,15,''],['auth','Authority: the reviewer can overrule with one click and no penalty',1,10,''],['name','A name: one named person answers for each decision',1,5,''],['back','A way back: the traveler is told the reason and can contest it',2,15,'any'],['first','Decide first: the label stays hidden until the reviewer answers',2,15,'in']];
+  const NAME={out:'Out of the loop',on:'On the loop',in:'In the loop'};
+  const caught=(p,adds)=>Math.min(95,Math.round(p[3]+adds.reduce((t,a)=>t+(a[4]==='any'?a[3]:a[4]==='in'?(p[0]==='in'?a[3]:0):a[3]*p[4]),0)));
+  let BEST=200; PL.forEach(p=>{ for(let m=0;m<64;m++){ const adds=AD.filter((a,i)=>m>>i&1); if(p[2]+adds.reduce((t,a)=>t+a[2],0)<=10) BEST=Math.min(BEST,Math.round(200*(100-caught(p,adds))/100)); } });
   $('#bldPlace').innerHTML=PL.map((p,i)=>`<label class="pickrow"><input type="radio" name="bldP" value="${i}"> <span>${p[1]}</span> <b>${p[2]} ${p[2]===1?'point':'points'}</b></label>`).join('');
   $('#bldAdds').innerHTML=AD.map((a,i)=>`<label class="pickrow"><input type="checkbox" value="${i}"> <span>${a[1]}</span> <b>${a[2]} ${a[2]===1?'point':'points'}</b></label>`).join('');
   const log=[]; let best=null;
@@ -1104,17 +1134,18 @@ INIT.build = () => {
   const upd=()=>{ const s=state(); $('#bldPts').textContent=`Points used: ${s.pts} of 10`; $('#bldPts').className='score'+(s.pts>10?' bad':''); $('#bldRun').disabled=!s.p||s.pts>10; };
   $$('#bldPlace input, #bldAdds input').forEach(x=>x.onchange=upd);
   $('#bldRun').onclick=()=>{ const s=state(); if(!s.p||s.pts>10) return;
-    const usable=s.adds.filter(a=>a[0]!=='first'||s.p[0]==='before'), c=Math.min(95,Math.round(s.p[3]+s.p[4]*usable.reduce((t,a)=>t+a[3],0))), through=Math.round(200*(100-c)/100);
+    const c=caught(s.p,s.adds), through=Math.round(200*(100-c)/100), has=k=>s.adds.some(a=>a[0]===k);
     if(best===null||through<best) best=through;
-    let why= s.p[0]==='after' ? 'The reviewer sees only a small sample after the fact. Nothing you gave the reviewer changes what the sample misses.'
-      : s.p[0]==='during' ? 'A person who watches can stop some errors. What you gave the reviewer works at half strength, because the system has already acted.'
-      : s.adds.length===0 ? 'A person decides every claim, with 20 seconds each, a label already on the screen, and extra work for disagreeing. This is the timed task. The reviewer mostly agrees with the system.'
-      : 'A person decides every claim, and each thing you added lets that person disagree with the system when it is wrong.';
-    if(s.adds.some(a=>a[0]==='first')&&s.p[0]!=='before') why+=' "Decide first" did nothing here: the system had already acted.';
-    $('#bldOut').innerHTML=`<h3>After one month</h3><div class="grid2"><div><div class="muted">Wrong labels caught</div><div class="stat good">${c}%</div></div><div><div class="muted">Wrong labels that reached a traveler</div><div class="stat ${through>60?'bad':through>25?'amb':'good'}">${through} of 200</div></div></div><p style="margin:10px 0 0">${why}</p><p style="margin:6px 0 0" class="score">Your best so far: ${best} of 200.${best<=20?' That is the best possible with 10 points.':' A design exists that lets only 20 through.'}</p>`;
+    let why= s.p[0]==='out' ? 'The system acts alone, and a person sees only a small sample afterward. Time, information, authority, and a name change nothing for the claims nobody looks at.'
+      : s.p[0]==='on' ? 'A person who watches can reverse some errors. What you gave the review works at half strength, because the system has already acted.'
+      : s.adds.length===0 ? 'A person decides every claim, with 20 seconds each and the label already on the screen. This is the timed task. The reviewer mostly agrees with the system.'
+      : 'A person decides every claim, and each thing you added helps that person disagree with the system when it is wrong.';
+    if(has('back')) why+=' The way back worked under this design, as it does under any design: the traveler always reads the decision.';
+    if(has('first')&&s.p[0]!=='in') why+=' "Decide first" did nothing here, because the system had already acted.';
+    $('#bldOut').innerHTML=`<h3>After one month</h3><div class="grid2"><div><div class="muted">Wrong labels caught</div><div class="stat good">${c}%</div></div><div><div class="muted">Wrong labels that reached a traveler</div><div class="stat ${through>60?'bad':through>25?'amb':'good'}">${through} of 200</div></div></div><p style="margin:10px 0 0">${why}</p><p style="margin:6px 0 0" class="score">Your best so far: ${best} of 200.${best<=BEST?' That is the best possible with 10 points.':` A design exists that lets only ${BEST} through.`}</p>`;
     $('#bldOut').classList.add('show');
-    log.push(`<tr><td>${({after:'Afterward',during:'While it happens',before:'Beforehand'})[s.p[0]]}</td><td>${s.adds.map(a=>a[1].split(':')[0]).join(', ')||'none'}</td><td>${s.pts}</td><td>${through}</td></tr>`);
-    $('#bldLog').innerHTML='<tr><th>A person checks</th><th>Reviewer gets</th><th>Points</th><th>Wrong labels reaching travelers</th></tr>'+log.join(''); };
+    log.push(`<tr><td>${NAME[s.p[0]]}</td><td>${s.adds.map(a=>a[1].split(':')[0]).join(', ')||'none'}</td><td>${s.pts}</td><td>${through}</td></tr>`);
+    $('#bldLog').innerHTML='<tr><th>Design</th><th>The review gets</th><th>Points</th><th>Wrong labels reaching travelers</th></tr>'+log.join(''); };
   upd();
 };
 
@@ -1123,8 +1154,8 @@ const fields=$$('[data-k]'), saved=store.get('u5answers',{});
 fields.forEach(f=>{ if(saved[f.dataset.k]!=null) f.value=saved[f.dataset.k];
   f.addEventListener('input',()=>{ const d={}; fields.forEach(x=>d[x.dataset.k]=x.value); store.set('u5answers',d); const s=$('#pSaved'); if(s) s.textContent='Saved in this browser'; }); });
 INIT.plan = () => {
-  const LBL={name:'My name',output:'1. What does my AI system return?',job:'2. What does my organization do with the output?',error:'3. Which error costs more, a miss or a false alarm? Why?',review:'4. When does a person check my AI system\'s output, and what does that person need for a real review?',
-    n0:'Notes: the earthquake alarm',svcNote:'Task 1: my note to the shift supervisor',n1:'Notes: my sentence that fooled the scorer',mNote:'Task 5: what is wrong with each machine',n3:'The fix that would have helped me most in the timed task',n2:'Notes: the closing question'};
+  const LBL={name:'My name',output:'1. What does my AI system return?',job:'2. What does my organization do with the output?',error:'3. Which error costs more, a miss or a false alarm? Why?',review:'4. Is a person in the loop, on the loop, or out of the loop? What does that person need for a real review?',
+    n0:'Notes: the earthquake alarm',svcNote:'Task 1: my note to the shift supervisor',n1:'Notes: my sentence that fooled the scorer',mNote:'Task 5: what is wrong with each machine',n3:'The practice that would have helped me most in the timed task',n2:'Notes: the closing question'};
   $('#pDl').onclick=()=>{ const v={}; fields.forEach(f=>v[f.dataset.k]=f.value.trim());
     const tries=store.get('u5fool',[]).map(t=>`  "${t.text}" | I mean ${TL[t.mean]} | scorer said ${TL[t.lab]} | ${t.fooled?'fooled':'not fooled'}`).join('\n');
     const txt='Unit 5 Lecture: my answers and notes\n\n'+Object.keys(LBL).map(k=>`${LBL[k]}\n${v[k]||'(blank)'}\n`).join('\n')+'\nTask 4: my tries at fooling the tone scorer\n'+(tries||'  (none)')+'\n';
